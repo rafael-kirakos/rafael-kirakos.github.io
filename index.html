@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rafael Kirakos · Root Protocol</title>
+<meta name="description" content="Root Protocol: 1:1-Mentoring für Menschen, die nicht mehr weiterwissen. Ernährung, Training, Kopf und Alltag, begleitet von Rafael Kirakos. Maximal fünf Menschen gleichzeitig.">
+<meta property="og:title" content="Rafael Kirakos · Root Protocol">
+<meta property="og:description" content="1:1-Mentoring für Menschen, die nicht mehr weiterwissen. Maximal fünf Menschen gleichzeitig.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f8f4ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23271a14'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Helvetica,Arial,sans-serif' font-weight='700' font-size='38' fill='%23e08a5c'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:oklch(97.5% .01 75);
+  --stage:oklch(93% .02 70);
+  --hair:oklch(88% .018 70);
+  --ink:oklch(21% .018 50);
+  --ink-2:oklch(43% .02 50);
+  --ink-3:oklch(56% .022 50);
+  --night:oklch(21% .028 45);
+  --night-2:oklch(26% .032 45);
+  --night-hair:rgba(255,240,225,.10);
+  --plat:oklch(96% .012 75);
+  --plat-2:oklch(76% .02 65);
+  --accent:oklch(55% .13 42);
+  --accent-dk:oklch(72% .12 50);
+  --sans:Inter,-apple-system,"SF Pro Display","Segoe UI",sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:40px;--s8:48px;--s9:64px;--s10:96px;--s11:144px;
+  --r-pill:999px;--r-card:20px;--r-stage:28px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding-inline:var(--s5)}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.dark .label{color:var(--accent-dk)}
+h1,h2,h3{font-weight:600;letter-spacing:-.035em;line-height:1.04}
+a{color:inherit;text-decoration:none}
+
+/* nav */
+.nav{display:flex;justify-content:space-between;align-items:center;padding-block:var(--s5);font-size:15px}
+.nav strong{font-weight:600;letter-spacing:-.01em}
+.nav .avail{font-size:13px;color:var(--ink-2);border:1px solid var(--hair);border-radius:var(--r-pill);padding:6px 14px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:var(--s2);padding:16px 28px;border-radius:var(--r-pill);background:var(--ink);color:var(--paper);font-weight:600;font-size:16px;letter-spacing:-.01em;transition:transform .18s var(--ease),opacity .18s var(--ease)}
+.btn .arr{transition:transform .18s var(--ease)}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);background:var(--accent)}
+.dark .btn:hover,.dark .btn:focus-visible{background:var(--accent-dk)}
+.btn:hover .arr,.btn:focus-visible .arr{transform:translateX(4px)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.dark .btn{background:var(--plat);color:var(--night)}
+.dark .btn:focus-visible{outline-color:var(--plat)}
+
+/* hero */
+.hero{padding-block:var(--s10) var(--s11)}
+.hero > div{max-width:980px}
+.hero h1{font-size:clamp(48px,8.4vw,124px);margin-top:var(--s5)}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:22px;color:var(--ink-2);max-width:620px;margin-top:var(--s6)}
+.hero .cta{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s3);margin-top:var(--s7)}
+.hero .cta small{font-size:14px;color:var(--ink-3)}
+.portrait{background:var(--stage);border-radius:var(--r-stage);aspect-ratio:4/5;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.portrait img{width:100%;height:auto;display:block;mix-blend-mode:multiply}
+.portrait .cap{position:absolute;left:var(--s5);top:var(--s5);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+
+/* sections */
+.sec{padding-block:var(--s11)}
+.dark{background:var(--night);color:var(--plat)}
+.sec h2{font-size:clamp(38px,5vw,68px);max-width:860px;margin-top:var(--s4)}
+.lead{font-size:21px;color:var(--ink-2);max-width:640px;margin-top:var(--s6)}
+.dark .lead{color:var(--plat-2)}
+
+/* five */
+.five{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--s9);align-items:center}
+.five .big{color:var(--accent-dk);font-size:clamp(200px,28vw,380px);font-weight:700;letter-spacing:-.06em;line-height:.78}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);margin-top:var(--s9)}
+.pillar{border:1px solid var(--night-hair);background:var(--night-2);border-radius:var(--r-card);padding:var(--s6) var(--s5)}
+.pillar h3{font-size:24px;letter-spacing:-.02em}
+.pillar p{font-size:15px;color:var(--plat-2);margin-top:var(--s3);line-height:1.55}
+
+/* list */
+.list{margin-top:var(--s9);border-top:1px solid var(--hair)}
+.row{display:grid;grid-template-columns:72px 1fr;gap:var(--s5);padding-block:var(--s6);border-bottom:1px solid var(--hair);font-size:23px;line-height:1.4;letter-spacing:-.015em}
+.row b{font-family:var(--mono);font-weight:400;font-size:13px;color:var(--accent);padding-top:7px}
+.after{margin-top:var(--s8);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s5);padding:var(--s6) var(--s7);background:var(--stage);border-radius:var(--r-card)}
+.after p{font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.025em;line-height:1.2}
+.after p span{color:var(--accent)}
+.after strong{color:var(--ink);font-weight:600}
+
+/* protocol */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4);margin-top:var(--s9)}
+.step{background:var(--night-2);border:1px solid var(--night-hair);border-radius:var(--r-card);padding:var(--s6) var(--s5);display:flex;flex-direction:column;min-height:340px;transition:border-color .3s var(--ease)}
+.step:hover{border-color:color-mix(in oklch,var(--accent-dk) 50%,transparent)}
+.step .n{font-family:var(--mono);font-size:13px;color:var(--accent-dk)}
+.step h3{font-size:28px;margin-top:auto;padding-top:var(--s8);letter-spacing:-.025em}
+.step p{font-size:15px;color:var(--plat-2);margin-top:var(--s3);line-height:1.55}
+
+/* included */
+.inc{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:var(--s9);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
+.inc div{padding:var(--s6) var(--s5);border-right:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.inc h3{font-size:20px;letter-spacing:-.02em}
+.inc p{font-size:15px;color:var(--ink-2);margin-top:var(--s2);line-height:1.55}
+
+/* about */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--s9);align-items:start}
+.about .portrait{aspect-ratio:3/4;position:sticky;top:var(--s5)}
+.portrait.sport img{mix-blend-mode:normal;height:100%;object-fit:cover;object-position:50% 50%}
+.about p{font-size:19px;color:var(--ink-2);margin-top:var(--s5)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);margin-top:var(--s8);padding-top:var(--s6);border-top:1px solid var(--hair)}
+.facts strong{display:block;color:var(--accent);font-size:52px;font-weight:600;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.facts span{display:block;font-size:14px;color:var(--ink-2);margin-top:var(--s2);line-height:1.45}
+
+/* stance */
+.stance{background:var(--stage);border-radius:var(--r-stage);padding:var(--s10) var(--s9);display:grid;grid-template-columns:1fr 1fr;gap:var(--s9);align-items:start}
+.stance h2{font-size:clamp(32px,3.6vw,48px);margin-top:var(--s4)}
+.stance p{font-size:18px;color:var(--ink-2)}
+.stance p+p{margin-top:var(--s4)}
+
+/* final */
+.final{text-align:center}
+.final h2{margin-inline:auto}
+.final .lead{margin-inline:auto}
+.final .btn{margin-top:var(--s8)}
+.final small{display:block;margin-top:var(--s4);font-size:14px;color:var(--plat-2)}
+footer{background:var(--night);color:var(--plat-2);font-size:13px;padding-bottom:var(--s7)}
+footer .wrap{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;border-top:1px solid var(--night-hair);padding-top:var(--s5)}
+
+@media (max-width:900px){
+  .hero,.five,.about,.stance{grid-template-columns:1fr}
+  .hero{padding-top:var(--s5);gap:var(--s7)}
+  .sec{padding-block:var(--s10)}
+  .pillars,.inc{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .about .portrait{position:static}
+  .stance{padding:var(--s8) var(--s5)}
+  .row{font-size:19px;grid-template-columns:40px 1fr}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}.step{min-height:0}
+  .facts strong{font-size:36px}
+  .nav .avail{font-size:12px;padding:4px 10px}
+  .hero p{font-size:19px}
+  .after{padding:var(--s5)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:color .2s,background-color .2s,border-color .2s!important}
+  .btn:hover,.btn:focus-visible,.btn:hover .arr,.btn:focus-visible .arr{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <strong>Rafael Kirakos</strong>
+  <span class="avail">Alle 5 Plätze vergeben</span>
+</header>
+
+<main>
+<section class="wrap hero">
+  <div>
+    <div class="label">Root Protocol · 1:1-Mentoring</div>
+    <h1>Für Menschen, die nicht mehr <span>weiterwissen.</span></h1>
+    <p>Du warst bei Ärzten, hast Diagnosen bekommen, nimmst Tabletten. Und trotzdem hat dir niemand gezeigt, wie du dein Leben zurückbekommst. Genau dort fange ich an.</p>
+    <div class="cta">
+      <a class="btn" href="#kontakt">Schreib mir deinen Fall <span class="arr">→</span></a>
+      <small>Besondere Fälle lese ich auch, wenn alle Plätze vergeben sind.</small>
+    </div>
+  </div>
+</section>
+
+<section class="dark sec">
+  <div class="wrap">
+    <div class="five">
+      <div class="big">5</div>
+      <div>
+        <div class="label">Bewusst begrenzt</div>
+        <h2>Fünf Menschen. Nicht mehr.</h2>
+        <p class="lead">Wer zu mir kommt, hat meistens zu viele kurze Termine hinter sich. Ich mache das Gegenteil: Ich nehme mir die Zeit, die dein Fall braucht, bis ich wirklich verstehe, wie du lebst und warum es dir so geht.</p>
+      </div>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><h3>Zeit</h3><p>Kein Zeitlimit im Gespräch. Ich höre zu, bis ich deine ganze Geschichte kenne.</p></div>
+      <div class="pillar"><h3>Verständnis</h3><p>Ich schaue nicht auf einen Wert, sondern auf dich: Körper, Kopf, Alltag und Vergangenheit.</p></div>
+      <div class="pillar"><h3>Erreichbarkeit</h3><p>Nicht zu Sprechzeiten, sondern dann, wenn du mich brauchst. Per Nachricht oder Anruf.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="label">Für wen</div>
+  <h2>Vielleicht erkennst du dich wieder.</h2>
+  <div class="list">
+    <div class="row"><b>01</b>Seit deiner Diagnose dreht sich alles um Tabletten, Werte und den nächsten Termin. Aber besser geht es dir nicht.</div>
+    <div class="row"><b>02</b>Du hast gehört: „Damit musst du jetzt für den Rest deines Lebens leben. Die Tabletten brauchst du für immer.“</div>
+    <div class="row"><b>03</b>Du hast Diäten, Trainingspläne und Kuren ausprobiert. Nichts davon hat gehalten.</div>
+    <div class="row"><b>04</b>Körper, Kopf und Alltag hängen zusammen. Doch jeder hat sich bisher nur einen Teil davon angeschaut.</div>
+    <div class="row"><b>05</b>Du bist an einem Punkt, an dem du nicht mehr weißt, was du noch tun sollst.</div>
+  </div>
+  <div class="after"><p>Du nickst bei einem oder mehr Punkten? <span>Schreib mir.</span></p><a class="btn" href="#kontakt">Deinen Fall schildern <span class="arr">→</span></a></div>
+</section>
+
+<section class="dark sec">
+  <div class="wrap">
+    <div class="label">Das Root Protocol</div>
+    <h2>An die Wurzel. Nicht an die Oberfläche.</h2>
+    <p class="lead">Vier Schritte, die bei jedem gleich beginnen und bei jedem anders aussehen.</p>
+    <div class="steps">
+      <div class="step"><span class="n">01 · 20 Minuten · kostenlos</span><h3>Erstgespräch</h3><p>Du erzählst, ich höre zu. Danach wissen wir beide, ob ich dir wirklich helfen kann.</p></div>
+      <div class="step"><span class="n">02 · ohne Zeitlimit</span><h3>Tiefenanalyse</h3><p>Per Call. Blutbild und Befunde, Tagesablauf, Ernährung, Schlaf, Stress, Psyche. Deine ganze Geschichte.</p></div>
+      <div class="step"><span class="n">03</span><h3>Dein Protocol</h3><p>Ernährung, Training, Supplement-Empfehlungen und ein Einkaufssystem, gebaut für genau dein Leben. Du musst nicht mehr raten, nur noch umsetzen.</p></div>
+      <div class="step"><span class="n">04 · täglich</span><h3>Begleitung</h3><p>Ich bin für dich erreichbar und passe deinen Plan an, sobald dein Körper oder dein Alltag es verlangt. Du bist damit nicht allein.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec">
+  <div class="label">Was du bekommst</div>
+  <h2>Alles, was du brauchst. Nichts, was du suchen musst.</h2>
+  <div class="inc">
+    <div><h3>Ernährungsplan</h3><p>Auf Grundlage deiner Blutwerte und Befunde, zugeschnitten auf deinen Alltag.</p></div>
+    <div><h3>Trainingsplan</h3><p>Für deinen Körper und dein Level. Von zu Hause bis Gym.</p></div>
+    <div><h3>Einkaufssystem</h3><p>Du weißt im Laden genau, was in den Korb kommt und was nicht.</p></div>
+    <div><h3>Kopf &amp; Gewohnheiten</h3><p>Muster erkennen, alte Gewohnheiten ersetzen, dranbleiben.</p></div>
+    <div><h3>Supplemente</h3><p>Gezielte Empfehlungen, abgeleitet aus deinen Werten. Nicht nach Gefühl, nicht auf Vorrat.</p></div>
+    <div><h3>Direkter Draht</h3><p>Nachricht oder Anruf, und dein Plan wird angepasst, sobald etwas nicht passt.</p></div>
+  </div>
+</section>
+
+<section class="wrap sec" style="padding-top:0">
+  <div class="about">
+    <div class="portrait sport"><img src="assets/rafael-pferd-web.jpg" alt="Rafael Kirakos in den Bergen mit einem Pferd"></div>
+    <div>
+      <div class="label">Wer ich bin</div>
+      <h2>Ich stelle die Fragen, die sonst keiner stellt.</h2>
+      <p>Leistungssport begleitet mich, seit ich sechs Jahre alt bin. Fußball hat mir früh gezeigt, was ein Körper leisten kann, wenn man ihn versteht.</p>
+      <p>Irgendwann habe ich angefangen, alles andere auch zu hinterfragen. Warum werden so viele Menschen krank? Warum endet so oft alles bei einer Tablette und so selten bei der Frage nach dem Warum?</p>
+      <p>Seitdem habe ich über 1.000 Stunden in Ernährung, Training und die Hintergründe von Krankheiten investiert und mein eigenes Leben danach ausgerichtet. Heute begleite ich Menschen, die selbst keinen Weg mehr sehen.</p>
+      <div class="facts">
+        <div><strong>13+</strong><span>Jahre Erfahrung im Leistungssport</span></div>
+        <div><strong>1.000+</strong><span>Stunden Ernährung, Training, Gesundheit</span></div>
+        <div><strong>5</strong><span>Menschen, die ich gleichzeitig begleite</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark sec" id="kontakt">
+  <div class="wrap final">
+    <div class="label">Der erste Schritt</div>
+    <h2>Eine Nachricht reicht.</h2>
+    <p class="lead">Erzähl mir, was du hast, was du schon versucht hast und wo du hinwillst. Ich lese jede Nachricht persönlich.</p>
+    <a class="btn" href="https://ig.me/m/rafael6nk" target="_blank" rel="noopener">Nachricht auf Instagram <span class="arr">→</span></a>
+    <small>Aktuell alle 5 Plätze vergeben · Besondere Fälle prüfe ich trotzdem</small>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rafael Kirakos · Root Protocol</span>
+    <span>Mentoring ersetzt keine ärztliche Diagnose oder Behandlung.</span>
+  </div>
+</footer>
+
+</body>
+</html>
